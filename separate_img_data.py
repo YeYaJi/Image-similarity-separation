@@ -4,11 +4,11 @@ from skimage.metrics import structural_similarity as ssim
 import shutil
 from skimage.metrics import peak_signal_noise_ratio as psnr
 
-dir_target_img = "/home/gsh/Desktop/te/Image-similarity-separation/target"  # 被用来对比的模版图文件夹(目标图像文件夹，里面存的是目标图像，最后筛出的图像是和这个目标图相似的图）
-dir_test_img = '/home/gsh/Desktop/te/Image-similarity-separation/all-image'  # 被用来检测分类的图片数据集文件夹（就是数据集图文件夹）
-dir_trash_img = "/home/gsh/PythonProjects/PycharmProjects/cloud_dibang/delet_same_img/the_2020-06-16_img/trash"  # 长宽比不符合的垃圾图被存入的文件夹（长宽不符合的图筛出来保存的文件夹）
-dir_other_img = "/home/gsh/Desktop/te/Image-similarity-separation/other"  # 长宽一致的其他图像被保存的文件夹（和目标图不相似的图保存的文件夹）
-dir_useful_img = "/home/gsh/Desktop/te/Image-similarity-separation/save"  # 留下来有用的图存储的文件夹（和目标图相似的图保存的文件夹）
+dir_target_img = "/home/target"  # 被用来对比的模版图文件夹(目标图像文件夹，里面存的是目标图像，最后筛出的图像是和这个目标图相似的图）
+dir_test_img = '/home/all-image'  # 被用来检测分类的图片数据集文件夹（就是数据集图文件夹）
+dir_trash_img = "/home/trash"  # 长宽比不符合的垃圾图被存入的文件夹（长宽不符合的图筛出来保存的文件夹）
+dir_other_img = "/home/other"  # 长宽一致的其他图像被保存的文件夹（和目标图不相似的图保存的文件夹）
+dir_useful_img = "/home/save"  # 留下来有用的图存储的文件夹（和目标图相似的图保存的文件夹）
 
 def delate_laji(dir_test_img, dir_trash_img):
     test_img_name_list = os.listdir(dir_test_img)
@@ -40,5 +40,5 @@ def similarity_classification(dir_target_img, dir_test_img, dir_useful_img, dir_
 
 
 if __name__ == '__main__':
-    # delate_laji(dir_test_img, dir_trash_img)
+    delate_laji(dir_test_img, dir_trash_img)
     similarity_classification(dir_target_img, dir_test_img, dir_useful_img, dir_other_img,function=ssim, weight=0.1)# 检测用的函数和权重自己选ssmi和psnr
